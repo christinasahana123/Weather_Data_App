@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+</head>
+<body>
+  <h1>Check Weather by Date</h1>
+  <input type="date" id="dateInput" />
+  <button onclick="getWeather()">Get Weather</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function getWeather() {
+      const date = document.getElementById("dateInput").value;
+      const res = await fetch(`http://127.0.0.1:8000/weather/${date}`);
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
